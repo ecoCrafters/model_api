@@ -18,8 +18,8 @@ class TodoListApiView(APIView):
     serializer_class = ImageSerializer
     # permission_classes = [permissions.IsAuthenticated]
     def get(self, request, *args, **kwargs):
-        todos = Todo.objects.all()
-        serializer = TodoSerializer(todos, many=True)
+        todos = UploadImageTest.objects.all()
+        serializer = ImageSerializer(todos, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
@@ -81,12 +81,12 @@ class TodoListApiView(APIView):
         # Show the image with bounding boxes and labels
         # print(label_final)
         # return HttpResponse(label_final)
-        # serializer = TodoSerializer(label_final, many=False)
+        # serializer = ImageSerializer(label_final, many=False)
         print(type(label_final))
         return Response(label_final,status=status.HTTP_200_OK)
         # return JsonResponse(json.dumps(label_final))
 
-        # serializer = TodoSerializer(data=data)
+        # serializer = ImageSerializer(data=data)
         # if serializer.is_valid():
         #     serializer.save()
         #     return Response(serializer.data, status=status.HTTP_201_CREATED)
